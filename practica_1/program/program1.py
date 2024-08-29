@@ -1,13 +1,15 @@
 import datetime
+import locale
 
 # 1. Запрос информации о дате рождения
-day = int(input("Введите день рождения (DD): "))
-month = int(input("Введите месяц рождения (MM): "))
-year = int(input("Введите год рождения (YYYY): "))
+day = int(input("Введите день рождения (ДД): "))
+month = int(input("Введите месяц рождения (ММ): "))
+year = int(input("Введите год рождения (ГГГГ): "))
 birth_date = datetime.date(year, month, day)
 
 # 2. Определение дня недели
 def get_weekday(date):
+    locale.setlocale(locale.LC_TIME, 'Russian_Russia.1251')
     return date.strftime("%A")
 
 # 3. Проверка на високосный год
