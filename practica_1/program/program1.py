@@ -32,7 +32,7 @@ def format_date_with_stars(date):
 
 # Вывод результатов
 print(f"Ваш день рождения: {get_weekday(birth_date)}")
-print(f"Високосный год: {'Да' if is_leap_year(year) else 'Нет'}")
+print(f"Високосный год: {'да' if is_leap_year(year) else 'нет'}")
 print(f"Сейчас вам {calculate_age(birth_date)} лет")
 print("Дата рождения в формате дд мм гггг:")
 print(format_date_with_stars(birth_date))
