@@ -120,5 +120,5 @@ print(f"Ваш день рождения: {get_weekday(birth_date)}")
 print(f"Високосный год: {'да' if is_leap_year(year) else 'нет'}")
 print(f"Сейчас вам {calculate_age(birth_date)} лет")
 date_str = f"{day:02} {month:02} {year}"
-print("Дата вашего рождения в формате дд мм гггг, где цифры прорисованы звёздочками (*):")
+print("Ваша дата рождения:")
 display_date_as_stars(date_str)
