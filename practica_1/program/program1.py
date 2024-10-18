@@ -22,17 +22,103 @@ def calculate_age(birth_date):
     age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
     return age
 
-# 5. Форматирование даты
-def format_date_with_stars(date):
-    day_str = str(date.day).zfill(2)
-    month_str = str(date.month).zfill(2)
-    year_str = str(date.year)
-    formatted_date = f"{day_str} {month_str} {year_str}"
-    return ' '.join(char if char == ' ' else '*' for char in formatted_date)
+# 5. Форматирование цифр в (*)
+digits_patterns = {
+    '0': [
+        " *** ",
+        "*   *",
+        "*   *",
+        "*   *",
+        " *** "
+    ],
+    '1': [
+        "  *  ",
+        " **  ",
+        "  *  ",
+        "  *  ",
+        " *** "
+    ],
+    '2': [
+        " *** ",
+        "*   *",
+        "   * ",
+        "  *  ",
+        "*****"
+    ],
+    '3': [
+        " *** ",
+        "    *",
+        "  ** ",
+        "    *",
+        " *** "
+    ],
+    '4': [
+        "   * ",
+        "  ** ",
+        " * * ",
+        "*****",
+        "   * "
+    ],
+    '5': [
+        "*****",
+        "*    ",
+        "**** ",
+        "    *",
+        "**** "
+    ],
+    '6': [
+        " *** ",
+        "*    ",
+        "**** ",
+        "*   *",
+        " *** "
+    ],
+    '7': [
+        "*****",
+        "    *",
+        "   * ",
+        "  *  ",
+        " *   "
+    ],
+    '8': [
+        " *** ",
+        "*   *",
+        " *** ",
+        "*   *",
+        " *** "
+    ],
+    '9': [
+        " *** ",
+        "*   *",
+        " ****",
+        "    *",
+        " *** "
+    ],
+    ' ': [
+        "     ",
+        "     ",
+        "     ",
+        "     ",
+        "     "
+    ]
+}
+def display_date_as_stars(date_string):
+    lines = ["", "", "", "", ""]
+    for ch in date_string:
+        if ch in digits_patterns:
+            pattern = digits_patterns[ch]
+            for i in range(5):
+                lines[i] += pattern[i] + "  "
+        else:
+            for i in range(5):
+                lines[i] += "     "
+    for line in lines:
+        print(line)
 
 # Вывод результатов
 print(f"Ваш день рождения: {get_weekday(birth_date)}")
 print(f"Високосный год: {'да' if is_leap_year(year) else 'нет'}")
 print(f"Сейчас вам {calculate_age(birth_date)} лет")
-print("Дата рождения в формате дд мм гггг:")
-print(format_date_with_stars(birth_date))
+date_str = f"{day:02} {month:02} {year}"
+print("Дата вашего рождения в формате дд мм гггг, где цифры прорисованы звёздочками (*):")
+display_date_as_stars(date_str)
